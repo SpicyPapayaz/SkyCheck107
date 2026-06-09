@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "version": "2026.06",
+    "name": "FAA Part 107 Advisory Rule Pack",
+    "disclaimer": "Advisory pre-flight planning aid only. It does not provide FAA authorization, weather briefing, legal advice, or a substitute for Remote PIC judgment."
+  },
+  "numeric_rules": [
+    {
+      "id": "ALT-400",
+      "title": "Maximum altitude",
+      "field": "altitude_agl_ft",
+      "operator": "<=",
+      "threshold": 400,
+      "severity": "critical",
+      "regulation": "14 CFR §107.51(b)",
+      "recommendation": "Keep the operation at or below 400 ft AGL unless a valid structure exception, authorization, or waiver applies.",
+      "pass_message": "Requested altitude {value:.0f} ft AGL is within the {threshold:.0f} ft advisory limit.",
+      "fail_message": "Requested altitude {value:.0f} ft AGL exceeds the {threshold:.0f} ft advisory limit."
+    },
+    {
+      "id": "VIS-3SM",
+      "title": "Minimum flight visibility",
+      "field": "visibility_sm",
+      "operator": ">=",
+      "threshold": 3,
+      "severity": "critical",
+      "regulation": "14 CFR §107.51(c)",
+      "recommendation": "Wait for improved visibility or relocate the mission.",
+      "pass_message": "Visibility {value:.1f} SM meets the minimum {threshold:.0f} SM advisory threshold.",
+      "fail_message": "Visibility {value:.1f} SM is below the minimum {threshold:.0f} SM advisory threshold."
+    },
+    {
+      "id": "CLOUD-H-2000",
+      "title": "Horizontal cloud clearance",
+      "field": "cloud_clearance_horizontal_ft",
+      "operator": ">=",
+      "threshold": 2000,
+      "severity": "major",
+      "regulation": "14 CFR §107.51(d)",
+      "recommendation": "Increase distance from clouds or delay the flight.",
+      "pass_message": "Horizontal cloud clearance {value:.0f} ft meets the {threshold:.0f} ft advisory threshold.",
+      "fail_message": "Horizontal cloud clearance {value:.0f} ft is below the {threshold:.0f} ft advisory threshold."
+    },
+    {
+      "id": "CLOUD-V-500",
+      "title": "Vertical cloud clearance",
+      "field": "cloud_clearance_vertical_ft",
+      "operator": ">=",
+      "threshold": 500,
+      "severity": "major",
+      "regulation": "14 CFR §107.51(d)",
+      "recommendation": "Maintain at least 500 ft below clouds or delay the operation.",
+      "pass_message": "Vertical cloud clearance {value:.0f} ft meets the {threshold:.0f} ft advisory threshold.",
+      "fail_message": "Vertical cloud clearance {value:.0f} ft is below the {threshold:.0f} ft advisory threshold."
+    }
+  ],
+  "special_rules": {
+    "controlled_airspace": {
+      "id": "AIRSPACE-AUTH",
+      "title": "Controlled airspace authorization",
+      "severity": "critical",
+      "controlled_classes": ["B", "C", "D", "E"],
+      "regulation": "14 CFR §107.41",
+      "recommendation": "Use LAANC or DroneZone/ATC authorization as applicable before operating in controlled airspace."
+    },
+    "night_operations": {
+      "id": "NIGHT-LIGHTS",
+      "title": "Night/twilight lighting",
+      "severity": "major",
+      "regulation": "14 CFR §107.29",
+      "recommendation": "Confirm required training and anti-collision lights visible for at least 3 statute miles."
+    },
+    "location_risk": {
+      "id": "LOC-RISK",
+      "title": "Location risk factors",
+      "severity": "major",
+      "regulation": "Remote PIC pre-flight assessment / operational safety",
+      "recommendation": "Check NOTAMs, TFRs, B4UFLY/FAA data, public safety activity, airport proximity, and Remote ID."
+    }
+  },
+  "operation_flags": {
+    "operations_over_people": {
+      "id": "OOP-CAT",
+      "title": "Operations over people",
+      "severity": "major",
+      "regulation": "14 CFR Subpart D",
+      "recommendation": "Verify the aircraft category, declaration, exposed rotating parts requirements, and operating limitations.",
+      "active_message": "Operation over people was selected; category-specific compliance must be verified.",
+      "inactive_message": "No operation over people selected."
+    },
+    "operations_over_moving_vehicles": {
+      "id": "VEH-MOVE",
+      "title": "Operations over moving vehicles",
+      "severity": "major",
+      "regulation": "14 CFR §107.145",
+      "recommendation": "Avoid moving vehicles unless all Part 107 operating category conditions are met.",
+      "active_message": "Operation over moving vehicles was selected; verify category and transit-only conditions.",
+      "inactive_message": "No operation over moving vehicles selected."
+    }
+  }
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SkyCheck 107 | UAV Mission Planner</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">FAA Part 107-inspired advisory engine</p>
+        <h1>SkyCheck 107</h1>
+        <p class="subtitle">Drone Mission Pre-Flight Tool: Always Check to Prevent the Wreck!</p>
+      </div>
+      <div class="hero-card">
+        <span id="decisionBadge" class="badge idle">READY</span>
+        <div class="score-ring"><span id="score">0</span><small>risk</small></div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <form id="missionForm" class="panel form-panel">
+        <h2>Mission Inputs</h2>
+        <div class="two">
+          <label>Mission name<input name="mission_name" placeholder="e.g., Downtown roof inspection" required></label>
+          <label>Remote PIC<input name="pilot_name" placeholder="e.g., Jane Remote PIC" required></label>
+        </div>
+        <label>Location<input name="location" placeholder="e.g., Pittsburgh, PA" required></label>
+        <div class="three">
+          <label>Latitude<input name="latitude" type="number" step="0.0001" placeholder="40.4406" required></label>
+          <label>Longitude<input name="longitude" type="number" step="0.0001" placeholder="-79.9959" required></label>
+          <label>Airport distance NM<input name="near_airport_nm" type="number" step="0.1" placeholder="6" required></label>
+        </div>
+        <div class="three">
+          <label>Altitude AGL ft<input name="altitude_agl_ft" type="number" placeholder="300" required></label>
+          <label>Visibility SM<input name="visibility_sm" type="number" step="0.1" placeholder="6" required></label>
+          <label>Wind mph<input name="wind_speed_mph" type="number" step="1" placeholder="12" required></label>
+        </div>
+        <div class="two">
+          <label>Cloud horizontal ft<input name="cloud_clearance_horizontal_ft" type="number" placeholder="2500" required></label>
+          <label>Cloud vertical ft<input name="cloud_clearance_vertical_ft" type="number" placeholder="700" required></label>
+        </div>
+        <div class="two">
+          <label>Airspace
+            <select name="airspace_class" required>
+              <option value="" selected disabled>Select airspace</option>
+              <option>G</option><option>B</option><option>C</option><option>D</option><option>E</option>
+            </select>
+          </label>
+          <label>Light condition
+            <select name="daylight_condition" required>
+              <option value="" selected disabled>Select light condition</option>
+              <option value="day">Day</option>
+              <option value="civil_twilight">Civil twilight</option>
+              <option value="night">Night</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="toggles">
+          <label><input type="checkbox" name="laanc_authorization"> LAANC/ATC authorization</label>
+          <label><input type="checkbox" name="anti_collision_lights"> Anti-collision lights</label>
+          <label><input type="checkbox" name="visual_observer"> Visual observer</label>
+          <label><input type="checkbox" name="operations_over_people"> Over people</label>
+          <label><input type="checkbox" name="operations_over_moving_vehicles"> Over moving vehicles</label>
+          <label><input type="checkbox" name="near_emergency"> Emergency activity nearby</label>
+          <label><input type="checkbox" name="remote_id_ready"> Remote ID ready</label>
+        </div>
+        <label>Mission notes<textarea name="notes" placeholder="Brief mission objective, VLOS plan, launch area notes, and known hazards"></textarea></label>
+        <button type="submit">Evaluate Mission</button>
+      </form>
+
+      <section class="panel output-panel">
+        <h2>Pre-Flight Decision</h2>
+        <p id="summary" class="summary">Submit a mission to generate advisory guidance.</p>
+        <div id="findings" class="findings"></div>
+        <h3>Operator Checklist</h3>
+        <div id="checklist" class="checklist"></div>
+        <details>
+          <summary>JSON output</summary>
+          <pre id="jsonOutput">{}</pre>
+        </details>
+      </section>
+    </section>
+
+    <footer>
+      <span>Built with Python, Flask, Docker, Git, Jira-style delivery artifacts, and JSON rules.</span>
+      <span>Advisory only — always verify current FAA sources before flight.</span>
+    </footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

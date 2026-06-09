@@ -1,0 +1,101 @@
+:root {
+  --bg: #07111f;
+  --panel: rgba(255,255,255,0.08);
+  --panel-strong: rgba(255,255,255,0.13);
+  --text: #eef6ff;
+  --muted: #9fb1c7;
+  --line: rgba(255,255,255,0.15);
+  --accent: #74d7ff;
+  --good: #42e8a5;
+  --warn: #ffd166;
+  --bad: #ff6b6b;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(116,215,255,0.28), transparent 28rem),
+    radial-gradient(circle at bottom right, rgba(66,232,165,0.12), transparent 24rem),
+    var(--bg);
+}
+
+.shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 36px 0; }
+.hero, .grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 22px; align-items: stretch; }
+.hero { margin-bottom: 22px; }
+.eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 0.16em; font-weight: 800; font-size: 0.78rem; }
+h1 { margin: 0; font-size: clamp(3rem, 9vw, 6.5rem); line-height: 0.9; }
+.subtitle { max-width: 700px; color: var(--muted); font-size: 1.15rem; }
+.panel, .hero-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, var(--panel), rgba(255,255,255,0.04));
+  border-radius: 28px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.28);
+  backdrop-filter: blur(20px);
+}
+.hero-card { padding: 28px; display: flex; align-items: center; justify-content: space-between; }
+.panel { padding: 24px; }
+h2, h3 { margin-top: 0; }
+.two, .three { display: grid; gap: 14px; }
+.two { grid-template-columns: repeat(2, 1fr); }
+.three { grid-template-columns: repeat(3, 1fr); }
+label { display: grid; gap: 7px; color: var(--muted); font-size: 0.88rem; font-weight: 700; margin-bottom: 14px; }
+input, select, textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,0.22);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 12px 14px;
+  outline: none;
+}
+textarea { min-height: 90px; resize: vertical; }
+.toggles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 14px; margin: 12px 0 18px; }
+.toggles label { display: flex; align-items: center; gap: 10px; margin: 0; background: rgba(255,255,255,0.06); padding: 10px; border-radius: 14px; }
+.toggles input { width: auto; }
+button {
+  border: 0;
+  border-radius: 18px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, var(--accent), var(--good));
+  color: #04111f;
+  font-weight: 900;
+  cursor: pointer;
+  width: 100%;
+}
+.badge { padding: 10px 14px; border-radius: 999px; font-weight: 900; background: var(--panel-strong); }
+.badge.success { background: rgba(66,232,165,0.18); color: var(--good); }
+.badge.warning { background: rgba(255,209,102,0.18); color: var(--warn); }
+.badge.critical { background: rgba(255,107,107,0.18); color: var(--bad); }
+.score-ring {
+  width: 136px; height: 136px; border-radius: 999px; display: grid; place-items: center;
+  border: 10px solid rgba(116,215,255,0.28);
+  background: rgba(0,0,0,0.2);
+}
+.score-ring span { font-size: 2.4rem; font-weight: 950; }
+.score-ring small { color: var(--muted); margin-top: -34px; }
+.summary { color: var(--muted); }
+.finding {
+  display: grid; grid-template-columns: 38px 1fr; gap: 12px; padding: 14px;
+  border: 1px solid var(--line); border-radius: 18px; margin-bottom: 10px; background: rgba(0,0,0,0.16);
+}
+.finding p { margin: 4px 0; color: var(--text); }
+.finding small { color: var(--muted); }
+.status { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 950; background: var(--panel-strong); }
+.finding.pass .status { color: var(--good); }
+.finding.caution .status { color: var(--warn); }
+.finding.fail .status { color: var(--bad); }
+.task { border-left: 3px solid var(--accent); padding: 3px 0 10px 12px; }
+.task span { font-weight: 900; }
+.task p { color: var(--muted); margin: 3px 0 0; }
+details { margin-top: 18px; }
+pre { overflow: auto; background: rgba(0,0,0,0.32); padding: 16px; border-radius: 16px; max-height: 300px; }
+footer { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); margin-top: 22px; font-size: 0.86rem; }
+@media (max-width: 900px) {
+  .hero, .grid, .two, .three, .toggles { grid-template-columns: 1fr; }
+  .hero-card { flex-direction: column; gap: 16px; align-items: flex-start; }
+  footer { flex-direction: column; }
+}
