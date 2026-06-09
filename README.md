@@ -8,7 +8,9 @@ It evaluates UAV mission inputs against configurable FAA Part 107 advisory rules
 
 > Advisory only. This tool does not provide FAA authorization, legal advice, aviation weather briefing, or a substitute for Remote PIC judgment.
 
-## Resume Alignment
+
+## Live Demo
+LINK: [https://skycheck107.azurewebsites.net](url)
 
 **Tools:** Python, Docker, Git, Jira-style planning docs, JSON  
 
