@@ -1,6 +1,6 @@
 # SkyCheck 107 — UAV Mission Planning & Pre-Flight Analysis Tool
 
-SkyCheck 107 is a portfolio-grade, Dockerized Python web app for pre-flight UAV mission checks.
+SkyCheck 107 is a Dockerized Python web app for pre-flight UAV mission checks.
 
 **Drone Mission Pre-Flight Tool: Always Check to Prevent the Wreck!**
 
@@ -11,7 +11,7 @@ It evaluates UAV mission inputs against configurable FAA Part 107 advisory rules
 ## Resume Alignment
 
 **Tools:** Python, Docker, Git, Jira-style planning docs, JSON  
-**Demonstrates:** rule-engine design, API endpoints, responsive UI, config-driven software logic, automated tests, Microsoft Azure container deployment readiness.
+
 
 ## Features
 
