@@ -10,7 +10,7 @@ It evaluates UAV mission inputs against configurable FAA Part 107 advisory rules
 
 
 ## Live Demo
-LINK: [https://skycheck107.azurewebsites.net](url)
+Live Demo: [SkyCheck 107](https://skycheck107.azurewebsites.net)
 
 **Tools:** Python, Docker, Git, Jira-style planning docs, JSON  
 
